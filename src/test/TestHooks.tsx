@@ -1,22 +1,22 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
 
-function TestHooks(){
-    const [name, setName] = useState("jk")
-    const [editName, setEditName] = useState(name)
+function TestHooks() {
+    const [name, setName] = useState('jk');
+    const [editName, setEditName] = useState(name);
 
-    const updateName = (newName: string)=>{
-        setName(newName)
+    const updateName = (newName: string) => {
+        setName(newName);
+    };
+
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEditName(e.target.value);
     }
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>)=>{
-        setEditName(e.target.value)
-    }
+    const handleSubmit = () => {
+        updateName(editName);
+    };
 
-    const handleSubmit = ()=>{
-        updateName(editName)
-    }
-
-    return(
+    return (
         <div>
             <p>Hello {name}!</p>
             <br/>
@@ -25,4 +25,4 @@ function TestHooks(){
         </div>
     )
 }
-export default TestHooks
+export default TestHooks;
