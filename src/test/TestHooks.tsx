@@ -10,7 +10,7 @@ function TestHooks() {
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEditName(e.target.value);
-    }
+    };
 
     const handleSubmit = () => {
         updateName(editName);
@@ -23,6 +23,6 @@ function TestHooks() {
             请输入姓名:<input value={editName} onChange={handleInput}></input>
             <button onClick={handleSubmit}>提交</button>
         </div>
-    )
+    );
 }
 export default TestHooks;
