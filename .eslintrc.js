@@ -100,8 +100,15 @@ module.exports = {
         "location": "anywhere"
         }],
         "curly": 1, // 必须使用 if(){} 中的{}
+        'no-var': "error", // 禁止使用 var
 
         // common js
-        "no-duplicate-imports": 1
+        "no-duplicate-imports": 1,
+
+        //typescript
+        '@typescript-eslint/consistent-type-definitions': [
+            "error",
+            "interface"
+        ]
     }
 };
