@@ -22,7 +22,8 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks"
     ],
     "rules": {
         // 警告
@@ -605,6 +606,10 @@ module.exports = {
         'yield-star-spacing': [
             'error',
             'after'
-        ]
+        ],
+
+        //hooks的两条规则
+        "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+        "react-hooks/exhaustive-deps": "warn" // 检查 effect 的依赖
     }
 };
