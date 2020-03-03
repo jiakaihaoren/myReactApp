@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Input, Button } from 'antd';
 import { getList } from '../api/listApi';
 import { UserEntity } from '../model/user';

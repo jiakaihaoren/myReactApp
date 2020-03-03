@@ -361,14 +361,14 @@ module.exports = {
             }
         ],
         // @fixable 对象字面量只有一行时，大括号内的首尾必须有空格
-        'object-curly-spacing': [
-            'error',
-            'always',
-            {
-                arraysInObjects: true,
-                objectsInObjects: false
-            }
-        ],
+        // 'object-curly-spacing': [
+        //     'error',
+        //     'always',
+        //     {
+        //         arraysInObjects: true,
+        //         objectsInObjects: false
+        //     }
+        // ],
         // @fixable 对象字面量内的属性每行必须只有一个
         // @off 没必要限制
         'object-property-newline': 'off',

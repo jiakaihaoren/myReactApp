@@ -5,6 +5,8 @@ import { Spin } from 'antd';
 import { useMappedState, IState } from './store';
 import TestHooks from './test/TestHooks';
 import { SpringTest } from './serverTest';
+import { Animation } from './animation';
+import { JKZZJ } from './jkzzj';
 
 function App() {
     const { show } = useMappedState(
@@ -20,7 +22,7 @@ function App() {
         <Router>
             <Spin size="large" spinning={show}>
                 <div>
-                    <ul>
+                    {/* <ul>
                         <li>
                             <Link to="/">Home</Link>
                         </li>
@@ -30,9 +32,10 @@ function App() {
                         <li>
                             <Link to="/user">User</Link>
                         </li>
-                    </ul>
-
-                    <hr />
+                        <li>
+                            <Link to="/animation">Animation</Link>
+                        </li>
+                    </ul> */}
                     <Switch>
                         <Route exact path="/">
                             <div>/</div>
@@ -42,6 +45,12 @@ function App() {
                         </Route>
                         <Route path="/user">
                             <SpringTest></SpringTest>
+                        </Route>
+                        <Route path="/animation">
+                            <Animation></Animation>
+                        </Route>
+                        <Route path="/jkzzj">
+                            <JKZZJ></JKZZJ>
                         </Route>
                     </Switch>
                 </div>

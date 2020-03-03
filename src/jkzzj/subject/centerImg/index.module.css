@@ -1,0 +1,9 @@
+.wrap{
+  z-index:1;
+}
+.card {
+  width: 35ch;
+  height: 35ch;
+  margin: -50px -30px;
+  z-index: 1;
+}

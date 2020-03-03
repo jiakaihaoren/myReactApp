@@ -11,10 +11,10 @@ export const SpringTest = () => {
     const [list, setList] = useState<UserEntity[]>([]);
     const dispatch = useDispatch();
     const getAllList = () => {
-        dispatch({ type: 'show', payload: true });
+        // dispatch({ type: 'show', payload: true });
         getListAll().then(list => {
             setList(list);
-            dispatch({ type: 'show', payload: false });
+            // dispatch({ type: 'show', payload: false });
         });
     };
 
