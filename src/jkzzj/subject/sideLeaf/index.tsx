@@ -1,23 +1,25 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import styles from './index.module.css';
+import { navUris } from '../utils';
 
 const trans = (s:number):string => `scale(${s})`;
 
 interface SideLeafProps{
+    children: React.ReactElement,
     navIndex:number,
-    navSrc: string,
-    navText: string,
-    showDetail:(id:number)=>void
+    showDetail?:(id:number)=>void
 }
-export const SideLeaf = (props: SideLeafProps) => {
-    const { navIndex, navSrc, navText, showDetail } = props;
+
+export const SideLeaf : React.FC<SideLeafProps> = (props: SideLeafProps) => {
+    const { navIndex, showDetail, children } = props;
+    const navSrc:string = require(`../../images/${navUris[navIndex]}`);
     const [propsSpring, set] = useSpring(() => ({s: 1, config: { mass: 5, tension: 350, friction: 40 } }));
-    const history = useHistory();
+    // const history = useHistory();
     const toNavDetail = () => {
         // history.push('/animation');
-        showDetail(navIndex);
+        if (typeof showDetail === 'function') { showDetail(navIndex) }
     };
     return (
         <div>
@@ -28,7 +30,7 @@ export const SideLeaf = (props: SideLeafProps) => {
                 onClick={() => { toNavDetail() }}
                 // @ts-ignore
                 style={{ transform: propsSpring.s.interpolate(trans), backgroundImage: `url(${navSrc})` }}
-            >{navText}</animated.div>
+            >{children}</animated.div>
         </div>
     );
 };

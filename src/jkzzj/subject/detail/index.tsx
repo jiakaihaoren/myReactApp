@@ -1,34 +1,26 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useSpring, animated } from 'react-spring';
+// import { useHistory } from 'react-router-dom';
 import styles from './index.module.css';
-import { DetailImg1 } from './DetailImg1';
-
-const trans = (s:number):string => `scale(${s})`;
+import { DetailImg1 } from './detailImg/DetailImg1';
+import { SideLeaf } from '../sideLeaf';
 
 interface NavDetailProps{
-    navSrc:string,
+    navIndex:number,
     showNav:()=>void
 }
 export const NavDetail = (props: NavDetailProps) => {
-    const { navSrc, showNav } = props;
-    const [propsSpring, set] = useSpring(() => ({s: 1, config: { mass: 5, tension: 350, friction: 40 } }));
-    const history = useHistory();
+    const { navIndex, showNav } = props;
+    // const history = useHistory();
     const toNav = () => {
         // history.push('/animation');
         showNav();
     };
     return (
-        <div>
-            <DetailImg1></DetailImg1>
-            {/* <animated.div
-                className={styles.card}
-                onMouseMove={() => set({ s: 1.1 })}
-                onMouseLeave={() => set({ s: 1 })}
-                onClick={() => { toNav() }}
-                // @ts-ignore
-                style={{ transform: propsSpring.s.interpolate(trans), backgroundImage: `url(${navSrc})` }}
-            >返回</animated.div> */}
+        <div className={styles.body}>
+            <DetailImg1 navIndex={navIndex}></DetailImg1>
+            <div className={styles.sideLeaf} onClick={() => { toNav() }}>
+                <SideLeaf navIndex={navIndex}><span>返回</span></SideLeaf>
+            </div>
         </div>
     );
 };
