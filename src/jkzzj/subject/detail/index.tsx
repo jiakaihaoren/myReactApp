@@ -1,26 +1,32 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom';
+import { useSpring, animated, interpolate } from 'react-spring';
 import styles from './index.module.css';
-import { DetailImg1 } from './detailImg/DetailImg1';
+import { DetailImg } from './detailImg/DetailImg';
 import { SideLeaf } from '../sideLeaf';
 
 interface NavDetailProps{
     navIndex:number,
-    showNav:()=>void
+    showNav:()=>void,
+    showAnimated:boolean
 }
 export const NavDetail = (props: NavDetailProps) => {
-    const { navIndex, showNav } = props;
-    // const history = useHistory();
+    const { navIndex, showNav, showAnimated } = props;
+    // const { xy } = useSpring({from: {xy: [0, 0] }, xy: [300, 100], config: {duration: 1000} });
+    const [springProps, setSpringProps] = useSpring(() => ({xy: [0, 0], config: { duration: 300 } }));
+    setSpringProps({xy: showAnimated ? [300, 100] : [0, 0]});
     const toNav = () => {
-        // history.push('/animation');
         showNav();
     };
     return (
         <div className={styles.body}>
-            <DetailImg1 navIndex={navIndex}></DetailImg1>
-            <div className={styles.sideLeaf} onClick={() => { toNav() }}>
-                <SideLeaf navIndex={navIndex}><span>返回</span></SideLeaf>
-            </div>
+            <DetailImg navIndex={navIndex}></DetailImg>
+            <animated.div className={styles.sideLeaf}
+                onClick={() => { toNav() }}
+                // @ts-ignore
+                style={{transform: springProps.xy.interpolate((x, y) => `translate3d(${x}px, ${y}px, 0)`)}}
+            >
+                <SideLeaf navIndex={navIndex} showAnimated={false}><span>返回</span></SideLeaf>
+            </animated.div>
         </div>
     );
 };

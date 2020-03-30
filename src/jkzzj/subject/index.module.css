@@ -16,3 +16,8 @@
     display: flex;
     align-items: center;
 }
+.navCenter{
+    display: flex;
+    width: 550px;
+    justify-content: space-between;
+}

@@ -15,9 +15,8 @@ export const DetailImg1 = (props: DetailImg1Props) => {
     const index = useRef(0);
     const [springsProps, set] = useSprings(pages.length, i => ({ x: i * window.innerWidth / 2, sc: 1, display: 'block' }));
     const bind = useGesture(({ down, delta: [xDelta], direction: [xDir], distance, cancel }) => {
-        if (down && distance > window.innerWidth / 2 / 2)
         // @ts-ignore
-        { cancel(index.current = clamp(index.current + (xDir > 0 ? -1 : 1), 0, pages.length - 1)) }
+        if (down && distance > window.innerWidth / 2 / 2) { cancel(index.current = clamp(index.current + (xDir > 0 ? -1 : 1), 0, pages.length - 1)) }
         // @ts-ignore
         set(i => {
             if (i < index.current - 1 || i > index.current + 1) { return { display: 'none' } }

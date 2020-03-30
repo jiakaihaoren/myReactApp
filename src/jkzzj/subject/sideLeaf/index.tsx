@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import styles from './index.module.css';
 import { navUris } from '../utils';
@@ -10,29 +9,30 @@ interface SideLeafProps{
     children: React.ReactElement,
     navIndex:number,
     showDetail?:(id:number)=>void
+    showAnimated:boolean
 }
 
 export const SideLeaf : React.FC<SideLeafProps> = (props: SideLeafProps) => {
-    const { navIndex, showDetail, children } = props;
+    const { navIndex, showDetail, children, showAnimated } = props;
     const navSrc:string = require(`../../images/${navUris[navIndex]}`);
-    const [propsSpring, set] = useSpring(() => ({s: 1, config: { mass: 5, tension: 350, friction: 40 } }));
-    // const history = useHistory();
+    const [springProps, setSpringProps] = useSpring(() => ({s: 1, config: { duration: 300 } }));
+    const {s} = useSpring({s: 1, config: { duration: 500 }, from: {s: 0} });
+    setSpringProps({s: showAnimated ? 0 : 1});
     const toNavDetail = () => {
-        // history.push('/animation');
-        if (typeof showDetail === 'function') { showDetail(navIndex) }
+        if (showDetail) {
+            showDetail(navIndex);
+        }
     };
     return (
-        <div>
+        <animated.div style={{transform: s.interpolate(trans)}}>
             <animated.div
                 className={styles.card}
-                onMouseMove={() => set({ s: 1.1 })}
-                onMouseLeave={() => set({ s: 1 })}
+                onMouseMove={() => !showAnimated && setSpringProps({ s: 1.1 })}
+                onMouseLeave={() => !showAnimated && setSpringProps({ s: 1 })}
                 onClick={() => { toNavDetail() }}
                 // @ts-ignore
-                style={{ transform: propsSpring.s.interpolate(trans), backgroundImage: `url(${navSrc})` }}
+                style={{ transform: springProps.s.interpolate(trans), backgroundImage: `url(${navSrc})` }}
             >{children}</animated.div>
-        </div>
+        </animated.div>
     );
 };
-
-// export default withRouter(SideLeaf);
