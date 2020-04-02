@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSprings, animated, interpolate } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 import styles from './DetailImg.module.css';
-import { navImgs } from '../../utils';
+import { navImgs, sourceUrl } from '../../utils';
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i:number) : {x:number, y:number, scale:number, rot:number, delay:number } => ({ x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100 });
@@ -16,7 +16,7 @@ interface DetailImgProps{
 }
 export const DetailImg = (props:DetailImgProps) => {
     const { navIndex } = props;
-    const cards:string[] = navImgs[navIndex].map(navImg => require(`../../../images/jkzzj/${navImg}`));
+    const cards:string[] = navImgs[navIndex].map(navImg => `${sourceUrl}/images/jkzzj/${navImg}`);
     const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
     const [springsProps, set] = useSprings(cards.length, i => ({ ...to(i), from: from(i) })); // Create a bunch of springs using the helpers above
     // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity

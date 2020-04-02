@@ -1,3 +1,5 @@
+export const sourceUrl = 'https://jiakaihaoren.github.io/mySources/myReactApp/jkzzj';
+
 export const navUris:string[] = ['nav1.png', 'nav2.png', 'nav3.png', 'nav4.png', 'nav5.png', 'nav6.png'];
 
 export const navTexts:string[] = ['初识&相恋', '毕业&生日', '稻城', '长沙&雷子', '公园&山顶&滑雪', '成都&酒馆&熊猫'];

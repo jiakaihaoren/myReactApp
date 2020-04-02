@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import { CenterImg } from './centerImg';
 import { SideLeaf } from './sideLeaf';
 import { NavDetail } from './detail';
-import { navTexts } from './utils';
+import { navTexts, sourceUrl } from './utils';
 
 export const Subject = () => {
     const [navIndex, setNavIndex] = useState<number>(-1);
@@ -38,7 +38,7 @@ export const Subject = () => {
                 return '陈芳语 - 爱你 (铃声).mp3';
         }
     };
-    const bgMusic = require(`../music/jkzzj/${bgMusicSource(navIndex)}`);
+    const bgMusic = `${sourceUrl}/music/${bgMusicSource(navIndex)}`;
     return (
         <div className={styles.body}>
             <audio id="bg-music" src={bgMusic} preload="auto" autoPlay loop></audio>
