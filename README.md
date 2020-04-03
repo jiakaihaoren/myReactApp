@@ -29,8 +29,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `node app.js`
 
-Runs the app in the app for build production.<br />
+Runs the app in the app for build production locally.<br />
 Open [http://localhost:3002](http://localhost:3002) to view it in the browser.
+
+### `npm run deploy`
+
+Deploy the app in the github page.
 
 ### `npm run eject`
 
@@ -44,7 +48,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Static Sources: 
 
-The static sources is in my github repository https://github.com/jiakaihaoren/mySources/tree/master/myReactApp/jkzzj 
+The static sources is placed in my github repository(https://github.com/jiakaihaoren/mySources/tree/master/myReactApp/jkzzj) 
 
 ## Learn More
 

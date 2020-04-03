@@ -1,7 +1,7 @@
 .body{
     background:url(https://jiakaihaoren.github.io/mySources/myReactApp/jkzzj/images/jkzzj/background.jpg) no-repeat top center;
     background-size: 100% 100%;
-    height:700px;
+    height:100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +18,6 @@
 }
 .navCenter{
     display: flex;
-    width: 550px;
+    width: 25rem;
     justify-content: space-between;
 }
