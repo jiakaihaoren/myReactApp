@@ -13,7 +13,7 @@ export const NavDetail = (props: NavDetailProps) => {
     const { navIndex, showNav, showAnimated } = props;
     // const { xy } = useSpring({from: {xy: [0, 0] }, xy: [300, 100], config: {duration: 1000} });
     const [springProps, setSpringProps] = useSpring(() => ({xy: [0, 0], config: { duration: 300 } }));
-    setSpringProps({xy: showAnimated ? [4.7, 7.5] : [-3, -3]});
+    setSpringProps({xy: showAnimated ? [4.5, 7] : [-3, -3]});
     const toNav = () => {
         showNav();
     };
